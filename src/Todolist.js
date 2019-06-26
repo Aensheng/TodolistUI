@@ -2,7 +2,7 @@ import React, { Component }from 'react'
 import 'antd/dist/antd.css'
 import store from './store/index'
 import TodolistUI from './TodolistUI'
-import { InputChangeAction, CommitItemAction, DeleteItemAction } from './store/actionCreator'
+import { InputChangeAction, CommitItemAction, DeleteItemAction, GetInitList } from './store/actionCreator'
 
 
 class Todolist extends Component {
@@ -27,6 +27,11 @@ class Todolist extends Component {
         )
     }
 
+    componentDidMount() {
+        const action =  GetInitList()
+        store.dispatch(action)
+    }
+
     handleStoreChange() {
         this.setState(store.getState())
     }
@@ -48,3 +53,4 @@ class Todolist extends Component {
 }
 
 export default Todolist
+ 
